@@ -18,7 +18,7 @@ module.exports.buildCommits = async function (pols, input) {
     const F = new F3g("0xFFFFFFFF00000001");
 
     const N = pols.x.length;
-    const mod = BigInt(inputs[2]);
+    const mod = BigInt(input.mod);
 
     for (let i = 0; i < input.length; i++) {
         pols.x[i] = input[i]["x"];

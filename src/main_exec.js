@@ -23,8 +23,8 @@ async function run() {
     const input = JSON.parse(await fs.promises.readFile(inputFile, "utf8"));
     const cmPols = newCommitPolsArray(pil);
 
-    await Main.execute(cmPols.Main, input);
-    await Module.execute(cmPols.Module, input);
+    const required = await Main.execute(cmPols.Main, input);
+    await Module.execute(cmPols.Module, {...input, ...required});
 
     await cmPols.saveToFile(outputFile);
 
