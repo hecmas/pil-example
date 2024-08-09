@@ -1,0 +1,19 @@
+{
+  "name": "pil-example",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hecmas/pil-example.git"
+  },
+  "author": "Héctor Masip",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hecmas/pil-example/issues"
+  },
+  "homepage": "https://github.com/hecmas/pil-example#readme"
+}

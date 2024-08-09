@@ -1,0 +1,16 @@
+include "config.pil";
+
+namespace Main(%N);
+    pol constant L1;     // 1,0,0,.....,0
+    pol constant LN;     // 0,0,.....,0,1
+    pol commit a;
+    pol commit b;
+
+    // Inputs/outputs
+    (1-LN) * (a0' - a1) = 0;
+    (1-LN) * (a1' - (a0 + a1)) = 0;
+
+    public in0 = a0(0);
+    public out = a1(%N-1);
+    L1 * (a0 - :in0) = 0;
+    LN * (a1 - :out) = 0;
