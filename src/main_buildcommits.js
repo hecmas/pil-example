@@ -21,7 +21,7 @@ async function run() {
     const pil = await compile(F, path.join(__dirname, "..", "components/main/main.pil"));
 
     const inputs = JSON.parse(await fs.promises.readFile(inputFile, "utf8"));
-   
+
     const cmPols = newCommitPolsArray(pil);
 
     const required = await Main.buildCommits(cmPols.Main, inputs);

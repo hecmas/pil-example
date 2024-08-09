@@ -21,7 +21,6 @@ async function run() {
     const constPols = newConstantPolsArray(pil);
 
     await Global.buildConstants(constPols.Global);
-    await Main.buildConstants(constPols.Global);
     await Module.buildConstants(constPols.Module);
 
     await constPols.saveToFile(outputFile);

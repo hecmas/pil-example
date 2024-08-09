@@ -1,8 +1,5 @@
 const { F3g: F } = require("pil-stark");
 
-module.exports.buildConstants = async function(pols) {}
-
-
 module.exports.buildCommits = async function(pols, inputs) {
     const required = {Module: []};
 
