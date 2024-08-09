@@ -1,5 +1,5 @@
-include "config.pil";
-include "module.pil";
+include "../config.pil";
+include "../module/module.pil";
 
 namespace Main(%N);
     pol constant L1; // [1,0,0,.....,0]
