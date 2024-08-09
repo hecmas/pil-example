@@ -1,1 +1,1 @@
-constant %N = 2**8;
+constant %N = 2**9;
