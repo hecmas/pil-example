@@ -1,0 +1,15 @@
+
+namespace Module(%N);
+    pol constant BYTEp; // [1,2⁸-1]
+
+    pol commit x;       // input
+    pol commit q;       // quotient
+    pol commit r;       // remainder
+
+    public mod = x(%N-1);
+
+    // Check the division is correct
+    x = q * mod + r;
+
+    // Ensure that 0 <= r < mod <--> 0 < mod - r
+    {mod - r} in BYTEp;
