@@ -4,6 +4,7 @@ const version = require("../package").version;
 
 const Main = require("../components/main/main");
 const Module = require("../components/module/module");
+const Global = require("../components/global/global");
 
 const argv = require("yargs")
     .version(version)
@@ -19,7 +20,8 @@ async function run() {
 
     const constPols = newConstantPolsArray(pil);
 
-    await Main.buildConstants(constPols.Main);
+    await Global.buildConstants(constPols.Global);
+    await Main.buildConstants(constPols.Global);
     await Module.buildConstants(constPols.Module);
 
     await constPols.saveToFile(outputFile);

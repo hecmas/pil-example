@@ -1,9 +1,8 @@
 include "../config.pil";
 include "../module/module.pil";
+include "../global/global.pil";
 
 namespace Main(%N);
-    pol constant L1; // [1,0,0,.....,0]
-    pol constant LN; // [0,0,.....,0,1]
     pol commit a;
     pol commit b;
 
@@ -11,11 +10,11 @@ namespace Main(%N);
     public in1 = a(0);
     public in2 = b(0);
     public out = b(%N-1);
-    L1 * (a - :in1) = 0;
-    L1 * (b - :in2) = 0;
-    LN * (b - :out) = 0;
+    Global.L1 * (a - :in1) = 0;
+    Global.L1 * (b - :in2) = 0;
+    Global.LN * (b - :out) = 0;
 
-    (1 - LN) * (a' - b) = 0;
+    (1 - Global.LN) * (a' - b) = 0;
 
     // Use the module component to check the result
-    (1 - LN) {a*a + b*b, b'} is (1 - LN) {Module.x, Module.r}
+    (1 - Global.LN) {a*a + b*b, b'} is (1 - Global.LN) {Module.x, Module.r}

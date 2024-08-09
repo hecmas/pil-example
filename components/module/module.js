@@ -1,5 +1,3 @@
-const { F3g: F } = require("pil-stark");
-
 module.exports.buildConstants = async function (pols) {
 
     const N = pols.BYTEp.length;
@@ -14,21 +12,23 @@ module.exports.buildConstants = async function (pols) {
 }
 
 
-module.exports.buildCommits = async function (pols, input) {
-    const F = new F3g("0xFFFFFFFF00000001");
-
+module.exports.buildCommits = async function (pols, inputs, required) {
     const N = pols.x.length;
-    const mod = BigInt(input.mod);
+    const mod = BigInt(inputs.mod);
 
-    for (let i = 0; i < input.length; i++) {
-        pols.x[i] = input[i]["x"];
-        polsq.q[i] = x / mod;
-        pols.r[i] = x % mod;
+    for (let i = 0; i < required.Module.length; i++) {
+        pols.x[i] = required.Module[i]["x"];
+        pols.q[i] = pols.x[i] / mod;
+        pols.r[i] = pols.x[i] % mod;
     }
 
-    for (let i = input.length; i < N; i++) {
+    for (let i = required.Module.length; i < N - 1; i++) {
         pols.x[i] = 0n;
-        polsq.q[i] = 0n;
+        pols.q[i] = 0n;
         pols.r[i] = 0n;
     }
+
+    pols.x[N - 1] = mod;
+    pols.q[N - 1] = 1n;
+    pols.r[N - 1] = 0n;
 }

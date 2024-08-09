@@ -1,3 +1,4 @@
+include "../global/global.pil";
 
 namespace Module(%N);
     pol constant BYTEp; // [1,2⁸-1]
@@ -8,8 +9,10 @@ namespace Module(%N);
 
     public mod = x(%N-1);
 
+    Global.LN * (x - :mod) = 0;
+
     // Check the division is correct
-    x = q * mod + r;
+    x = q * :mod + r;
 
     // Ensure that 0 <= r < mod <--> 0 < mod - r
-    {mod - r} in BYTEp;
+    {:mod - r} in BYTEp;
