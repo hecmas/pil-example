@@ -1,6 +1,4 @@
-const { F3g } = require("pil-stark")
-
-const F = new F3g("0xFFFFFFFF00000001");
+const { F3g: F } = require("pil-stark");
 
 module.exports.buildConstants = async function (pols) {
 

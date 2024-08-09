@@ -1,7 +1,6 @@
 const path = require("path");
-const { F3g } = require("pil-stark");
-const version = require("../../../package").version;
-const { newConstantPolsArray, compile } = require("pilcom");
+const { F3g: F, newConstantPolsArray, compile } = require("pil-stark");
+const version = require("../package").version;
 
 const Main = require("../components/main");
 const Module = require("../components/module");
@@ -16,8 +15,7 @@ async function run() {
 
     const outputFile = typeof(argv.output) === "string" ?  argv.output.trim() : "tmp/main.const";
 
-    const F = new F3g();
-    const pil = await compile(F, path.join(__dirname, "pil/main.pil"));
+    const pil = await compile(F, path.join(__dirname, "..", "pil/main.pil"));
 
     const constPols = newConstantPolsArray(pil);
 

@@ -1,13 +1,10 @@
 const fs = require("fs");
 const path = require("path");
-const { F3g } = require("pil-stark");
-const version = require("../../../package").version;
+const { newCommitPolsArray, compile } = require("pil-stark");
+const version = require("../package").version;
 
 const Main = require("../components/main");
 const Module = require("../components/module");
-
-const { newCommitPolsArray, compile } = require("pilcom");
-
 
 const argv = require("yargs")
     .version(version)
@@ -21,11 +18,10 @@ async function run() {
     const outputFile = typeof(argv.output) === "string" ?  argv.output.trim() : "tmp/main.commit";
     const inputFile = typeof(argv.input) === "string" ?  argv.input.trim() : "input.json";
 
-    const F = new F3g();
-    const pil = await compile(F, path.join(__dirname, "pil/main.pil"));
+    const pil = await compile(F, path.join(__dirname, "..", "pil/main.pil"));
 
     const input = JSON.parse(await fs.promises.readFile(inputFile, "utf8"));
-    const cmPols =  newCommitPolsArray(pil);
+    const cmPols = newCommitPolsArray(pil);
 
     await Main.execute(cmPols.Main, input);
     await Module.execute(cmPols.Module, input);
