@@ -5,10 +5,15 @@ This repository leverages the Polygon zkEVM tool stack to implement a chip that 
 ## Repository Overview
 
 Overview of the main files and directories in this repository:
-- `components/`: Contains the arithmetization and the executor of the different components of the chip.
-  - `global/`: Contains the constant trace used across the multiple components.
-  - `main`: Defines the chip’s behavior.
+- `components/`: Contains the arithmetization and the executor for the different components of the chip.
+  - `global/`: Houses the constant trace used across multiple components.
+  - `main`: Defines the overall behavior of the chip.
   - `module`: Implements the modular operations.
+- `src/`: Includes configuration files and logic for generating the full execution trace.
+  - `inputs.json`: JSON file containing the public inputs of the chip.
+  - `*starkstruct.json`: JSON file describing the parameters to generate the proof.
+  - `main_buildcommit.js`: Generates the commitment part of the trace.
+  - `main_buildconst.js`: Generates the constant part of the trace.
 
 
 ## Prerequisites
